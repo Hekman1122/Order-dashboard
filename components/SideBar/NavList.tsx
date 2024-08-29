@@ -35,7 +35,7 @@ const list: ListType = [
 export default function NavList() {
   const [select, setSelect] = useState<String>("Dashboard");
   return (
-    <ul className="flex flex-col gap-6">
+    <ul className="flex flex-col gap-5">
       {list.map((item) => {
         return (
           <li
@@ -48,7 +48,7 @@ export default function NavList() {
             onClick={() => setSelect(item.title)}
           >
             <p>{item.icon}</p>
-            <p className="font-bold text-lg tracking-wider">{item.title}</p>
+            <p className="font-bold tracking-wider">{item.title}</p>
           </li>
         );
       })}

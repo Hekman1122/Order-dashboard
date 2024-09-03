@@ -1,6 +1,8 @@
 import { Button } from "../ui/button";
-
-export default function HeaderComponent() {
+import { prisma } from "@/lib/prisma";
+export default async function HeaderComponent() {
+  const data = await prisma.stock.findMany({});
+  console.log(data);
   return (
     <header className="pb-5 flex justify-between items-center">
       <div className="flex flex-col gap-1">

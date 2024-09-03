@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type StockSizeAmount {
+  medium Int
+  small  Int
+}
+
+type OrderSizeAmount {
+  amount  StockSizeAmount
+  product String
+}
+
+model Stock {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  engName     String          @unique
+  orderAmount StockSizeAmount
+  product     String          @unique
+  stockAmount StockSizeAmount
+}
+
+model Order {
+  id            String            @id @default(auto()) @map("_id") @db.ObjectId
+  orderNumber   String
+  orderProducts OrderSizeAmount[]
+  complete      Boolean           @default(false)
+  updateTime    DateTime          @default(now())
+  Client        Client?           @relation(fields: [clientId], references: [id])
+  clientId      String?           @db.ObjectId
+}
+
+model Client {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  client     String
+  tel        String
+  address    String
+  orders     Order[]
+  updateTime DateTime @default(now())
+}

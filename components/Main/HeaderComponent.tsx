@@ -1,8 +1,6 @@
 import { Button } from "../ui/button";
 import { prisma } from "@/lib/prisma";
 export default async function HeaderComponent() {
-  const data = await prisma.stock.findMany({});
-  console.log(data);
   return (
     <header className="pb-5 flex justify-between items-center">
       <div className="flex flex-col gap-1">
@@ -20,8 +18,11 @@ export default async function HeaderComponent() {
         <Button variant={"default"} className="font-bold">
           Add new order
         </Button>
-        <Button variant={"secondary"} className="font-bold">
-          search order
+        <Button
+          variant={"secondary"}
+          className="font-bold bg-secondColor text-neutral-700"
+        >
+          Add new product
         </Button>
       </div>
     </header>

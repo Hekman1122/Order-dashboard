@@ -23,6 +23,7 @@ model Stock {
   orderAmount StockSizeAmount
   product     String          @unique
   stockAmount StockSizeAmount
+  price       String
 }
 
 model Order {

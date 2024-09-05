@@ -1,6 +1,9 @@
 import ChartComponent from "@/components/Chart/ChartComponent";
-import HeaderComponent from "@/components/Main/HeaderComponent";
-export default function Home() {
+import { prisma } from "@/lib/prisma";
+
+export default async function Home() {
+  const stock = await prisma.stock.findMany({});
+  console.log(stock);
   return (
     <main>
       <ChartComponent />

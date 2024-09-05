@@ -19,11 +19,10 @@ type OrderSizeAmount {
 
 model Stock {
   id          String          @id @default(auto()) @map("_id") @db.ObjectId
-  engName     String          @unique
   orderAmount StockSizeAmount
   product     String          @unique
   stockAmount StockSizeAmount
-  price       String
+  price       StockSizeAmount
 }
 
 model Order {

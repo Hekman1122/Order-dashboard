@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
-import { prisma } from "@/lib/prisma";
+
 export default async function HeaderComponent() {
   return (
     <header className="pb-5 flex justify-between items-center">
@@ -22,7 +23,7 @@ export default async function HeaderComponent() {
           variant={"secondary"}
           className="font-bold bg-secondColor text-neutral-700"
         >
-          Add new product
+          <Link href={"/createStock"}>Add new product</Link>
         </Button>
       </div>
     </header>

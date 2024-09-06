@@ -1,5 +1,5 @@
 "use server";
-// {product: 'cheese', mediumAmount: '60', smallAmount: '24', price_small: '50', price_medium: '65'}
+
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 const formSchema = z.object({

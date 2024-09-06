@@ -4,6 +4,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/hooks/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 import {
   Form,
   FormControl,
@@ -25,6 +27,7 @@ const formSchema = z.object({
 });
 
 export default function StockForm() {
+  const { toast } = useToast();
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,9 +40,34 @@ export default function StockForm() {
     },
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
-    createStockAction(values);
-    router.push("/");
+    // createStockAction(values);
+    toast({
+      title: "create new product successfully.",
+      description: "page will redirect to home page.",
+      action: (
+        <ToastAction
+          altText="done"
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          done
+        </ToastAction>
+      ),
+    });
+    // function wait(duration: number) {
+    //   return new Promise((resolve) => {
+    //     setTimeout(() => {
+    //       resolve("等待完成");
+    //     }, duration);
+    //   });
+    // }
+
+    // wait(3000).then(() => {
+    //   router.push("/");
+    // });
   }
+
   return (
     <Form {...form}>
       <form

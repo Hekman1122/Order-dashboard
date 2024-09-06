@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/SideBar/SideBar";
 import HeaderComponent from "@/components/Main/HeaderComponent";
+import { Toaster } from "@/components/ui/toaster";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -26,6 +28,7 @@ export default function RootLayout({
             <HeaderComponent />
             {children}
           </div>
+          <Toaster />
         </div>
       </body>
     </html>

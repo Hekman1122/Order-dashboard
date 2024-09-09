@@ -16,10 +16,6 @@ export async function createStockAction(values: z.infer<typeof formSchema>) {
     await prisma.stock.create({
       data: {
         product,
-        orderAmount: {
-          medium: 0,
-          small: 0,
-        },
         price: {
           medium: Number.parseInt(price_medium),
           small: Number.parseInt(price_small),

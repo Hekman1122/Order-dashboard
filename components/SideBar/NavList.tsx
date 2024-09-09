@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import {
   ChartLine,
   Layers3,
@@ -16,7 +17,7 @@ const list: ListType = [
     icon: <ChartLine />,
   },
   {
-    title: "Stock",
+    title: "products",
     icon: <Layers3 />,
   },
   {
@@ -38,18 +39,26 @@ export default function NavList() {
     <ul className="flex flex-col gap-5">
       {list.map((item) => {
         return (
-          <li
+          <Link
+            href={`/${item.title === "Dashboard" ? "/" : item.title}`}
             key={item.title}
-            className={`flex gap-6 items-center py-3 rounded-e-md pl-8 duration-300 cursor-pointer transition-all ${
-              item.title === select
-                ? "text-neutral-700 bg-secondColor"
-                : "text-neutral-500"
-            }`}
-            onClick={() => setSelect(item.title)}
           >
-            <p>{item.icon}</p>
-            <p className="font-bold tracking-wider">{item.title}</p>
-          </li>
+            <li
+              className={`flex gap-6 items-center py-3 rounded-e-md pl-8 duration-300 cursor-pointer transition-all ${
+                item.title === select
+                  ? "text-neutral-700 bg-secondColor"
+                  : "text-neutral-500"
+              }`}
+              onClick={() => {
+                setSelect(item.title);
+              }}
+            >
+              <p>{item.icon}</p>
+              <p className="font-bold tracking-wider">
+                {item.title.toUpperCase()}
+              </p>
+            </li>
+          </Link>
         );
       })}
     </ul>

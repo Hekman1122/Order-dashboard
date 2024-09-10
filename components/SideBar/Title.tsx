@@ -2,7 +2,7 @@ import Image from "next/image";
 import logo from "@/public/logo.png";
 export default function Title() {
   return (
-    <div className="flex gap-3 items-center w-full pl-6">
+    <div className="flex gap-3 items-center w-full px-3">
       <Image
         src={logo}
         alt="logo"

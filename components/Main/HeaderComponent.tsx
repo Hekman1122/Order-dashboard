@@ -23,7 +23,7 @@ export default async function HeaderComponent() {
           variant={"secondary"}
           className="font-bold bg-secondColor text-neutral-700"
         >
-          <Link href={"/createStock"}>Add new product</Link>
+          <Link href={"/products/createProduct"}>Add new product</Link>
         </Button>
       </div>
     </header>

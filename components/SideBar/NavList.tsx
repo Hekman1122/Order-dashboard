@@ -36,7 +36,7 @@ const list: ListType = [
 export default function NavList() {
   const [select, setSelect] = useState<String>("Dashboard");
   return (
-    <ul className="flex flex-col gap-5">
+    <ul className="flex flex-col gap-1">
       {list.map((item) => {
         return (
           <Link
@@ -44,7 +44,7 @@ export default function NavList() {
             key={item.title}
           >
             <li
-              className={`flex gap-6 items-center py-3 rounded-e-md pl-8 duration-300 cursor-pointer transition-all ${
+              className={`flex gap-6 items-center py-4 rounded-e-md pl-8 duration-300 cursor-pointer transition-all ${
                 item.title === select
                   ? "text-neutral-700 bg-secondColor"
                   : "text-neutral-500"

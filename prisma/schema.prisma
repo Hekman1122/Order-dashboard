@@ -26,7 +26,6 @@ model Stock {
 
 model Order {
   id            String            @id @default(auto()) @map("_id") @db.ObjectId
-  orderNumber   String
   orderProducts OrderSizeAmount[]
   complete      Boolean           @default(false)
   updateTime    DateTime          @default(now())

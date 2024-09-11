@@ -1,3 +1,8 @@
+import OrderForm from "@/components/Order/OrderForm";
 export default function CreateOrder() {
-  return <div>create Orders</div>;
+  return (
+    <div>
+      <OrderForm />
+    </div>
+  );
 }

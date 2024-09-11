@@ -21,15 +21,15 @@ const list: ListType = [
     icon: <Layers3 />,
   },
   {
-    title: "Orders",
+    title: "orders",
     icon: <ReceiptText />,
   },
   {
-    title: "Account",
+    title: "account",
     icon: <UserRound />,
   },
   {
-    title: "Setting",
+    title: "setting",
     icon: <Settings />,
   },
 ];

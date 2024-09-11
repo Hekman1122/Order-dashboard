@@ -17,7 +17,7 @@ export default async function HeaderComponent() {
       {/* function button */}
       <div className="flex items-center justify-center gap-4">
         <Button variant={"default"} className="font-bold">
-          Add new order
+          <Link href={"/orders/createOrder"}>Add new order</Link>
         </Button>
         <Button
           variant={"secondary"}

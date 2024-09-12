@@ -1,3 +1,4 @@
+"use client";
 import {
   Dialog,
   DialogClose,
@@ -10,8 +11,27 @@ import {
 import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { useState } from "react";
+
 const productList = ["cheese", "beef", "chicken", "pork", "tomato", "potato"];
-export default function OrderModal() {
+
+type orderItemType = {
+  product: string;
+  amount: {
+    small: string;
+    medium: string;
+  };
+};
+type Props = {
+  orderItems: orderItemType[];
+  setOrderItems: React.Dispatch<React.SetStateAction<orderItemType[]>>;
+};
+
+export default function OrderModal({ orderItems, setOrderItems }: Props) {
+  const [product, setProduct] = useState<orderItemType>({
+    product: "",
+    amount: { small: "0", medium: "0" },
+  });
   return (
     <div>
       <Dialog>
@@ -31,6 +51,9 @@ export default function OrderModal() {
               type="text"
               placeholder="Enter product name"
               list="products"
+              onChange={(e) =>
+                setProduct({ ...product, product: e.target.value })
+              }
             />
             {
               <datalist id="products">
@@ -54,6 +77,12 @@ export default function OrderModal() {
                   type="text"
                   id="small"
                   placeholder="amount for small size"
+                  onChange={(e) => {
+                    setProduct({
+                      ...product,
+                      amount: { ...product.amount, small: e.target.value },
+                    });
+                  }}
                 />
               </div>
               <div>
@@ -67,14 +96,26 @@ export default function OrderModal() {
                   type="text"
                   id="medium"
                   placeholder="amount for medium size"
+                  onChange={(e) => {
+                    setProduct({
+                      ...product,
+                      amount: { ...product.amount, medium: e.target.value },
+                    });
+                  }}
                 />
               </div>
             </fieldset>
           </div>
           <DialogFooter className="sm:justify-start">
             <DialogClose asChild>
-              <Button type="button" variant="default">
-                Enter
+              <Button
+                type="button"
+                variant="default"
+                onClick={() => {
+                  setOrderItems((prev) => [...prev, product]);
+                }}
+              >
+                Add product to this order
               </Button>
             </DialogClose>
           </DialogFooter>

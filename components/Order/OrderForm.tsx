@@ -72,11 +72,9 @@ export default function StockForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-base font-bold">
-                  Enter Client
+                  Client Name
                 </FormLabel>
-                <FormDescription className="text-sm font-semibold text-neutral-500">
-                  Client
-                </FormDescription>
+                <FormDescription>Enter the name of the client</FormDescription>
                 <FormControl>
                   <Input placeholder="client" {...field} />
                 </FormControl>

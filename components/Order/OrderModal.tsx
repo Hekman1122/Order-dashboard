@@ -112,7 +112,16 @@ export default function OrderModal({ orderItems, setOrderItems }: Props) {
                 type="button"
                 variant="default"
                 onClick={() => {
-                  setOrderItems((prev) => [...prev, product]);
+                  setOrderItems((prev) => {
+                    const index = prev.findIndex(
+                      (p) => p.product === product.product
+                    );
+                    const newArray = [...prev];
+                    index === -1
+                      ? newArray.push(product)
+                      : (newArray[index] = product);
+                    return newArray;
+                  });
                 }}
               >
                 Add product to this order
